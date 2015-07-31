@@ -1,0 +1,60 @@
+
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+public class RegistrationDAO
+{
+static Connection currentCon = null;
+static ResultSet rs = null;
+public static RegistrationBean register(RegistrationBean bean)
+{
+Statement stmt = null;
+String username = bean.getUsername();
+String enrolment = bean.getEnrolment();
+String event = bean.getEvent();
+String eid = bean.getEventid();
+String phone = bean.getPhone();
+String dob1 = bean.getDob1();
+String dob2 = bean.getDob2();
+String dob3 = bean.getDob3();
+String uemail = bean.getUserEmail();
+String address = bean.getAddress();
+String eamt = bean.getEventAmount();
+
+String searchQuery = "INSERT INTO reg VALUES('"+username+"','"+enrolment+"','"+event+"',"+eid+","+phone+","+dob1+",'"+dob2+"',"+dob3+",'"+uemail+"','"+address+"',"+eamt+")";
+
+try
+{
+//connecting to the DB
+currentCon = ConnectionManager.getConnection();
+stmt=currentCon.createStatement();
+rs = stmt.executeQuery(searchQuery);
+boolean userExists = rs.next();
+
+if (!userExists)
+{
+System.out.println("Username/Password entered is Incorrect or User doesnot Exists.");
+bean.setValid(false);
+}
+else if (userExists)
+{
+
+System.out.println("Welcome " + username);
+
+bean.setValid(true);
+}
+
+}
+catch (Exception ex)
+{
+System.out.println("Registration failed: An Exception has occurred! " + ex);
+}
+return bean;
+}
+
+  
+
+    
+}
