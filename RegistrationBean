@@ -1,0 +1,128 @@
+
+//Data Encapsulation using Getters and Setters
+public class RegistrationBean {
+	private String username;
+	private String enrolment;
+        private String event;
+        private String eid;
+        private String phone;
+        private String dob1;
+        private String dob2;
+        private String dob3;
+        private String uemail;
+        private String address;
+        private String eamt;
+	
+	public boolean valid;
+	
+	
+	public String getUsername()
+	{
+		return username;
+	}
+	public void setUserName(String newUsername)
+	{
+		username = newUsername;
+	}
+        public String getEnrolment()
+	{
+		return enrolment;
+	}
+	public void setEnrolment(String newEnrolment)
+	{
+		enrolment = newEnrolment;
+	}
+        
+        
+        public String getEvent()
+	{
+		return event;
+	}
+	public void setEvent(String newEvent)
+	{
+		event = newEvent;
+	}
+        
+        
+         
+        public String getEventid()
+	{
+		return eid;
+	}
+	public void setEventid(String newEnventid)
+	{
+		eid = newEnventid;
+	}
+        
+         public String getPhone()
+	{
+		return phone;
+	}
+	public void setPhone(String newPhone)
+	{
+		phone = newPhone;
+	}
+        
+          public String getDob1()
+	{
+		return dob1;
+	}
+	public void setDob1(String newDob1)
+	{
+		dob1 = newDob1;
+	}
+        
+         public String getDob2()
+	{
+		return dob2;
+	}
+	public void setDob2(String newDob2)
+	{
+		dob2 = newDob2;
+	}
+        
+         public String getDob3()
+	{
+		return dob3;
+	}
+	public void setDob3(String newDob3)
+	{
+		dob3 = newDob3;
+	}
+        
+         public String getUserEmail()
+	{
+		return uemail;
+	}
+	public void setUserEmail(String newuemail)
+	{
+		uemail = newuemail;
+	}
+        
+        public String getAddress()
+	{
+		return address;
+	}
+	public void setAddress(String newaddress)
+	{
+		address = newaddress;
+	}
+        
+          public String getEventAmount()
+	{
+		return eamt;
+	}
+	public void setEventAmount(String neweamt)
+	{
+		eamt = neweamt;
+	}
+        
+	public boolean isValid()
+	{
+		return valid;
+	}
+	public void setValid(boolean newValid)
+	{
+		valid = newValid;
+	}
+}
