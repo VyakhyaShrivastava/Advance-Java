@@ -1,0 +1,66 @@
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+/**
+ * Servlet implementation class LoginServlet
+ */
+public class RegistrationServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public RegistrationServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		try
+		{
+			System.out.println("In the Registration Servlet");
+			RegistrationBean user = new RegistrationBean();
+			user.setUserName(request.getParameter("textfield"));
+			user.setEnrolment(request.getParameter("textfield2"));
+                        user.setEvent(request.getParameter("textfield3"));
+                        user.setEventid(request.getParameter("textfield4"));
+                        user.setPhone(request.getParameter("textfield5"));
+                        user.setDob1(request.getParameter("select1"));
+                        user.setDob2(request.getParameter("select2"));
+                        user.setDob3(request.getParameter("select3"));
+                        user.setUserEmail(request.getParameter("textfield7"));
+                        user.setAddress(request.getParameter("text"));
+                        user.setEventAmount(request.getParameter("textfield9"));
+                        
+			user = RegistrationDAO.register(user);
+			if(user.isValid())
+			{
+				HttpSession session = request.getSession(true);
+				session.setAttribute("currentSessionUser",user);
+				response.sendRedirect("payment_gateway.jsp");
+			}else
+				response.sendRedirect("RegistrationFailed.jsp");
+		} catch (Throwable exc)
+		{
+			System.out.println(exc);
+		}
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+	}
+
+}
+
+
